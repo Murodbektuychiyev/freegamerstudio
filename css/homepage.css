@@ -1,0 +1,668 @@
+/* ======================================================= */
+/* 1. GLOBAL RANG O'ZGARUVCHILARI (PRIMARY) */
+/* ======================================================= */
+:root {
+    --primary-color: #A052FF; /* Neon Binafsha */
+    --secondary-color: #4CAF50; /* Yashil Neon (Success/Active) */
+    --dark-color: #0d001a; /* Juda to'q fon */
+    --mid-dark-color: #1a1a2e; /* Karta foni/Header */
+    --light-text-color: #fff;
+    --low-contrast-text: rgba(255, 255, 255, 0.7);
+    --neon-shadow: 0 0 15px rgba(160, 82, 255, 0.5); 
+    --secondary-neon-shadow: 0 0 10px rgba(76, 175, 80, 0.6);
+}
+
+/* ======================================================= */
+/* 2. GLOBAL RESET VA BODY */
+/* ======================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--dark-color);
+    color: var(--light-text-color);
+    font-family: 'Arial', sans-serif; /* Shriftni o'zgartiring agar foydalanayotgan bo'lsangiz */
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Umumiylik */
+h1, h2, h3, h4 {
+    color: var(--light-text-color);
+    margin-bottom: 15px;
+}
+
+/* Global Linklar */
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s;
+}
+a:hover {
+    color: var(--secondary-color);
+}
+
+
+/* ======================================================= */
+/* 3. NAVIGATSIYA (NAVBAR) USLUBLARI */
+/* ======================================================= */
+.navbar {
+    background-color: rgba(13, 0, 26, 0.95); /* mid-dark-color dan to'qroq */
+    backdrop-filter: blur(5px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--primary-color);
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--primary-color);
+}
+.studio-text {
+    color: var(--secondary-color);
+}
+
+.navbar nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar nav li {
+    margin: 0 10px;
+}
+
+.navbar nav a {
+    color: var(--light-text-color);
+    padding: 10px 5px;
+    font-weight: 600;
+    display: block;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.navbar nav a:hover, .navbar nav a.active {
+    color: var(--secondary-color);
+    text-shadow: 0 0 8px var(--secondary-color);
+}
+
+/* NAVBAR ICHIDAGI USER INFO (o'ng tomon) */
+.navbar-user-info {
+    display: flex;
+    align-items: center;
+}
+
+/* FAYL ICHIDAGI USER PROFILE USLUBLARI (Navbar uchun) */
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+.user-avatar {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+    font-weight: 900;
+    margin-right: 8px;
+    border: 1px solid var(--secondary-color);
+    box-shadow: 0 0 5px var(--secondary-color);
+}
+.user-details {
+    display: none; /* Kichik ekranda yashirish */
+}
+.navbar-user-info:hover .user-details {
+    display: block;
+    position: absolute;
+    right: 30px;
+    top: 50px;
+    background-color: var(--mid-dark-color);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: var(--neon-shadow);
+    z-index: 1001;
+    min-width: 200px;
+}
+.user-email {
+    font-size: 0.8em;
+    color: var(--low-contrast-text);
+}
+.user-menu-icon {
+    display: none !important; /* Navbar versiyasida keraksiz */
+}
+
+/* MAIN CONTENT OFFSET */
+/* Navbar tepada turgani uchun asosiy kontentni pastga surish */
+.main-content {
+    padding: 80px 30px 30px 30px; 
+    flex-grow: 1;
+    background-color: var(--dark-color);
+}
+
+@media (max-width: 1000px) {
+    .navbar nav ul {
+        display: none; /* Kichik ekranda menyuni yashirish */
+    }
+    .navbar {
+        justify-content: space-around;
+    }
+    .navbar-user-info {
+        order: 1;
+    }
+}
+
+/* ======================================================= */
+/* GAMER-MODE.CSS - PLAYER HUB USLUBLARI (KONTENTGA OID) */
+/* ======================================================= */
+
+/* ======================================================= */
+/* 1. KONTENT KOMPONENTLARI (KARTALAR VA GRIDLAR) - YANGILANGAN */
+/* ======================================================= */
+
+.panel-card {
+    /* Asosiy Karta Uslublari */
+    background-color: var(--mid-dark-color);
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    /* Eski oddiy chegarani olib tashlaymiz */
+    border: none; /* Muhim! */
+
+    /* Animatsiya uchun kerakli xususiyatlar */
+    position: relative; 
+    overflow: hidden; /* Chegara tashqariga chiqmasligi uchun */
+    z-index: 1; /* Kontent chegaradan yuqorida turishi uchun */
+    
+    transition: all 0.3s;
+}
+
+/* Karta ichidagi kontentni yuqoriga chiqarish uchun element */
+/* Bu psevdo-element chegara ustida turishiga yordam beradi */
+.panel-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* ---------------------------------------------------- */
+/* RAINBOW BORDER EFFEKTI (Psevdo-element orqali) */
+/* ---------------------------------------------------- */
+
+.panel-card::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px; /* Chegarani biroz kengroq qilish */
+    
+    /* Kamalak gradusining o'zi */
+    background: linear-gradient(
+        45deg, 
+        #ff0000, /* Qizil */
+        #ff7f00, /* Zarg'aldoq */
+        #ffff00, /* Sariq */
+        #00ff00, /* Yashil */
+        #0000ff, /* Ko'k */
+        #4b0082, /* Indiggo */
+        #9400d3  /* Binafsha */
+    );
+    
+    background-size: 300% 300%; /* Animatsiya uchun o'lchamni kattalashtirish */
+    border-radius: 15px; /* Karta radiusidan biroz kattaroq */
+    
+    /* Animatsiyani qo'llash */
+    animation: rotating-rainbow 5s linear infinite;
+    z-index: 0; /* Asosiy kontent ostida bo'lishi kerak */
+    opacity: 0.8; /* Neon ko'rinishi uchun shaffoflik */
+}
+
+/* KARTA ICHIDAGI FAYLNI ORQAGA QAYTARISH */
+/* Psevdo-element orqali o'ralgan kartaning orqa fonini qayta yaratish */
+.panel-card::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background-color: var(--mid-dark-color); /* Karta ichki rangini tiklash */
+    border-radius: 8px; /* Karta radiusidan 2px kichik */
+    z-index: 1;
+}
+
+/* HOVER EFFECT (endilikda faqat karta o'zgaradi, chegara emas) */
+.panel-card:hover {
+    transform: translateY(-3px);
+    /* Chegaraga soya qo'shish uchun: */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.4); 
+}
+/* WELCOME SECTION */
+.welcome-section h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    text-shadow: 0 0 8px rgba(160, 82, 255, 0.5);
+    margin-bottom: 10px;
+}
+.welcome-section h2 { /* yuldoshevbaxron tabrigi */
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+    text-shadow: 0 0 5px var(--secondary-color);
+}
+.welcome-section p {
+    color: var(--low-contrast-text);
+}
+
+/* ACTION CARDS (3-ustun) */
+.action-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.action-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.action-card .icon-large {
+    font-size: 48px;
+    margin-bottom: 15px;
+    color: var(--secondary-color);
+    text-shadow: 0 0 10px var(--secondary-color);
+}
+.action-card h3 {
+    color: var(--light-text-color);
+    margin-bottom: 10px;
+}
+.action-card p {
+    flex-grow: 1;
+    color: var(--low-contrast-text);
+    margin-bottom: 20px;
+}
+
+/* ======================================================= */
+/* YANGI ANIMATSIYALAR */
+/* ======================================================= */
+
+/* 1. 360/180 Daraja Aylanish (Y-o'qida) */
+@keyframes spin {
+    0% { 
+        transform: rotateY(0deg) scale(1); 
+    }
+    50% { 
+        transform: rotateY(180deg) scale(1.1); /* 180 gradusda biroz kattalashish */
+    }
+    100% { 
+        transform: rotateY(360deg) scale(1); 
+    }
+}
+
+/* 2. O'ngdan-chapga, Tepaga-pastga va Oldinga-orqaga (3D Float) */
+@keyframes float-3d {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    }
+    25% {
+        transform: translate3d(10px, -5px, 5px) scale(1.1) rotate(5deg); /* O'ng-tepa-oldinga */
+    }
+    50% {
+        transform: translate3d(0, 5px, 10px) scale(1) rotate(0deg); /* Pastga-oldinga (ekranga yaqinlashish) */
+    }
+    75% {
+        transform: translate3d(-10px, -5px, -5px) scale(0.9) rotate(-5deg); /* Chap-tepa-orqaga */
+    }
+    100% {
+        transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    }
+}
+
+/* ACTION CARDS (3-ustun) */
+.action-card .icon-large {
+    font-size: 48px;
+    margin-bottom: 15px;
+    color: var(--secondary-color);
+    text-shadow: 0 0 10px var(--secondary-color);
+    
+    /* YANGILANISH: Ikonka 3D joylashuvga o'tadi */
+    perspective: 100px; /* 3D effekti uchun kerak */
+    display: inline-block;
+    
+    /* Animatsiyani qo'llash */
+    animation: spin 6s linear infinite; /* Aylanish animatsiyasi */
+}
+
+/* Hover bo'lganda float effektini berish (ixtiyoriy) */
+.action-card:hover .icon-large {
+    animation: float-3d 5s ease-in-out infinite alternate; 
+}
+
+.step-card span {
+    font-size: 40px;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    
+    /* YANGILANISH: Ikonka 3D joylashuvga o'tadi */
+    perspective: 50px;
+    display: inline-block;
+    
+    /* Animatsiyani qo'llash */
+    animation: float-3d 7s ease-in-out infinite; /* Sekin 3D float animatsiyasi */
+}
+
+/* Logo rasmiga ham qo'llash (FreeGamerStudioLogo) */
+.FreeGamerStudioLogo {
+    /* ... mavjud uslublar ... */
+    
+    perspective: 100px; 
+    display: block;
+    animation: float-3d 8s ease-in-out infinite alternate;
+}
+
+.sticker-icon {
+    display: inline-block; /* Muhim: Harakatlanuvchi elementga aylantirish */
+    perspective: 100px;   
+    margin-right: 5px;    
+    animation: float-3d 5s ease-in-out infinite alternate; /* O'zgartirishingiz mumkin */
+} 
+
+/* ======================================================= */
+/* TUGMALAR (YANGILANGAN) */
+/* ======================================================= */
+
+.btn-action {
+    background-color: var(--primary-color);
+    color: var(--dark-color); /* STANDART MATN RANGI: To'q */
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s;
+    margin-top: auto; 
+}
+
+.btn-action:hover {
+    background-color: var(--secondary-color); /* Hover fon: Yashil */
+    color: var(--light-text-color); /* YANGILANISH: Hover matn: Oq (yoki yorqin rang) */
+    box-shadow: var(--secondary-neon-shadow);
+}
+
+/* STATISTIKA (3-ustun - Bizning yutuqlarimiz) */
+.achievements-section h2 {
+    color: var(--secondary-color);
+    text-shadow: 0 0 5px var(--secondary-color);
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* ======================================================= */
+/* STATISTIKA RAQAMLARI (YANGILANGAN) */
+/* ======================================================= */
+
+.stat-number {
+    font-size: 3.0rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    text-shadow: var(--neon-shadow);
+    margin-bottom: 5px;
+    
+    /* YANGILANISH: Animatsiya uchun tayyorlash */
+    display: inline-block; /* Animatsiya ishlashi uchun */
+    perspective: 150px; /* 3D effekti uchun perspektiv */
+    
+    /* Animatsiyani qo'llash (o'rtacha tezlikda suzib yurish) */
+    animation: float-3d 6s ease-in-out infinite alternate;
+}
+
+.stat-label {
+    color: var(--low-contrast-text);
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+/* 4 QADAM (PROGRESS) */
+.steps-section h2 {
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--primary-color);
+}
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.step-card {
+    text-align: center;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 20px;
+}
+
+.step-card span {
+    font-size: 40px;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.step-card h4 {
+    color: var(--light-text-color);
+}
+
+.step-card.active-step {
+    border-bottom: 3px solid var(--secondary-color);
+}
+.step-card.active-step span {
+    color: var(--secondary-color);
+    text-shadow: 0 0 8px var(--secondary-color);
+}
+
+/* DIAGRAMMA JOYI */
+.chart-placeholder {
+    border: 2px dashed var(--primary-color);
+    padding: 20px;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--low-contrast-text);
+}
+
+/* ======================================================= */
+/* MINIMAL FOOTER Uslublari */
+/* ======================================================= */
+.site-footer {
+    /* HTML kodingizda class "footer" emas, "site-footer" deb ishlataylik */
+    /* Agar siz bergan kodni ishlatmoqchi bo'lsangiz, classni .footer ga o'zgartiring */
+    
+    background-color: var(--mid-dark-color);
+    color: var(--low-contrast-text);
+    text-align: center;
+    padding: 15px 30px;
+    margin-top: 40px; /* Kontentdan ajratish uchun */
+    
+    /* Neon chegara effekti */
+    border-top: 2px solid var(--primary-color);
+    box-shadow: 0 0 10px rgba(160, 82, 255, 0.2);
+    font-size: 0.9em;
+}
+
+.site-footer p {
+    margin: 0; /* Paragraf marginini olib tashlash */
+}
+
+/* LATEST INTELLIGENCE (MASLAHATLAR) */
+.tips-section h2 {
+    color: var(--light-text-color);
+    margin-bottom: 15px;
+}
+.tips-section h3 {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    color: var(--secondary-color);
+    text-shadow: 0 0 3px var(--secondary-color);
+}
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.link-small {
+    color: var(--primary-color);
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 10px;
+    transition: color 0.3s;
+}
+.link-small:hover {
+    color: var(--secondary-color);
+}
+
+/* SLOGAN */
+.slogan-section h3 {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    text-shadow: 0 0 8px var(--secondary-color);
+}
+
+/* ======================================================= */
+/* SLOGAN SECTION & LOGO RASMI (Yangi Uslublar) */
+/* ======================================================= */
+
+/* Slogan sektsiyasining joylashuvini o'rtaga keltirish */
+.slogan-section {
+    padding: 35px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Hamma narsani markazga qo'yish */
+    justify-content: center;
+}
+
+/* Rasm Konteyneri (Dumaloq chegara va Neon yorqinlik) */
+.designer-avatar-container {
+    margin: 20px 0;
+    padding: 5px; /* Chegaraning yoyilishi uchun bo'sh joy */
+    border-radius: 50%;
+    
+    /* Binafsha Neon chegara effekti */
+    box-shadow: 0 0 10px var(--primary-color), 
+                0 0 20px rgba(160, 82, 255, 0.4);
+    
+    transition: box-shadow 0.3s ease;
+}
+
+/* Rasmning o'zi (Dumaloq qilish) - KLASS NO'MI YANGILANDI */
+.FreeGamerStudioLogo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover; /* Rasmni siqmasdan to'ldirish */
+    border-radius: 50%; /* DUMALOQ SHAKL */
+    
+    /* Yashil Neon effekt - rasmning o'zida */
+    border: 3px solid var(--secondary-color);
+    box-shadow: 0 0 8px var(--secondary-color);
+    
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* HOVER EFFECT: Konteyner ustiga olib kelganda animatsiya */
+.designer-avatar-container:hover {
+    /* Chegarani Yashil Neon rangiga o'zgartirish */
+    box-shadow: 0 0 15px var(--secondary-color), 
+                0 0 30px rgba(76, 175, 80, 0.6);
+}
+
+.designer-avatar-container:hover .FreeGamerStudioLogo {
+    transform: scale(1.05); /* Rasm biroz kattalashadi */
+}
+
+/* ======================================================= */
+/* 2. RESPONSIVE USLUBLAR (Gamer Mode uchun) */
+/* ======================================================= */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 80px 15px 15px 15px; /* Kichikroq padding */
+    }
+    .stats-grid, .action-cards-grid, .steps-grid, .tips-grid {
+        grid-template-columns: 1fr; /* Hamma narsa tagma-tag joylashadi */
+    }
+    .navbar nav {
+        display: none; /* Navigatsiyani kichik ekranda yashirish */
+    }
+}
+
+/* --------------------------------------------------- */
+/* YANGILANGAN Rasm/Diagramma Uslublari (Tik holatda va Hover) */
+/* --------------------------------------------------- */
+
+.diagram-section .chart-placeholder {
+    /* Oldingi 'dashed border' uslublarini o'chirish */
+    padding: 20px; 
+    display: flex;
+    justify-content: center; /* Rasmni gorizontal markazlash */
+    align-items: center; 
+    border: none;
+    min-height: auto;
+}
+
+.game-chart-image {
+    /* Tik holatni qo'llab-quvvatlash va chegaralash */
+    max-height: 590px; /* Vertikal o'lchamni cheklash (kerak bo'lsa o'zgartiring) */
+    width: auto;      
+    max-width: 100%;  /* Konteynerdan oshib ketmasligi uchun */
+    
+    object-fit: contain; /* Rasm nisbatini buzmaslik */
+    
+    border-radius: 12px;
+    border: 1px solid var(--low-contrast-text);
+    
+    /* Neon effekt uchun tranzitsiya */
+    transition: box-shadow 0.4s ease, transform 0.2s ease;
+}
+
+/* HOVER EFFEKTI */
+.chart-placeholder:hover .game-chart-image {
+    /* Rasm ustiga olib kelganda kuchli neon effekt */
+    box-shadow: 0 0 20px var(--primary-color), 
+                0 0 30px rgba(160, 82, 255, 0.4);
+    transform: scale(1.02); /* Kichik kattalashish animatsiyasi */
+}
+
+/* RESPONSIVE TUZATISH (kerakli bo'lsa) */
+@media (max-width: 768px) {
+    .game-chart-image {
+        max-height: 300px; /* Kichik ekranda rasmni ixcham qilish */
+    }
+}
+
+/* ======================================================= */
+/* ANIMATSIYALAR */
+/* ======================================================= */
+
+/* Rainbow Gradient uchun ranglar o'zgarishi */
+@keyframes rotating-rainbow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%; /* Gradusni cheksiz aylantirish */
+    }
+}

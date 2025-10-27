@@ -1,0 +1,187 @@
+/* ==================================== */
+/* 1. GLOBAL & RESET */
+/* ==================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif; 
+    color: #fff;
+}
+
+body {
+    background-color: #0d001a; 
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* GRADIENT MATN */
+.gradient-text {
+    background: linear-gradient(90deg, #A052FF, #4CAF50); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent; 
+}
+
+/* ==================================== */
+/* 2. AUTH CARD & WRAPPER */
+/* ==================================== */
+
+.auth-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Fon effekti */
+    background: radial-gradient(circle at 75% 25%, rgba(132, 94, 194, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 25% 75%, rgba(65, 131, 215, 0.15) 0%, transparent 50%),
+                #0d001a; 
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    background-color: #1a1a2e; 
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 10;
+    text-align: center;
+}
+
+.logo-auth {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.auth-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+/* ==================================== */
+/* 3. FORM STYLES */
+/* ==================================== */
+
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 15px 15px 45px; 
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background-color: #0d001a; 
+    color: #fff;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #A052FF;
+    box-shadow: 0 0 5px #A052FF;
+}
+
+.input-group .icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+}
+
+.forgot-password {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.forgot-password a {
+    color: #A052FF;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.forgot-password a:hover {
+    color: #4CAF50;
+}
+
+/* ==================================== */
+/* 4. TUGMA (BUTTONS) */
+/* ==================================== */
+
+.btn-auth {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+    color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 20px;
+}
+
+.btn-auth:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(75, 117, 252, 0.5);
+}
+
+.btn-auth i {
+    margin-left: 10px;
+}
+
+/* ==================================== */
+/* 5. FOOTER QISMLARI */
+/* ==================================== */
+
+.register-link {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    /* margin-bottom 20px qoladi */
+}
+
+.register-link a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.register-link a:hover {
+    color: #A052FF;
+}
+
+/* Ijtimoiy login qismlari olib tashlanganligi sababli 'separator' va 'social-login' uslublari ham kerak emas. */
+
+/* ==================================== */
+/* 6. RESPONSIVE */
+/* ==================================== */
+
+@media (max-width: 500px) {
+    .auth-card {
+        padding: 30px 20px;
+        margin: 0 20px;
+    }
+}

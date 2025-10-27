@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Gamer Studio - Our Games</title>
+    <link rel="stylesheet" href="./css/indexstyle.css"> 
+    <link rel="stylesheet" href="./css/games.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">Free Gamer <span class="studio-text">Studio</span></div>
+        <nav>
+            <ul>
+                <li><a href="index.html#home">Home</a></li> 
+                <li><a href="about.html">About</a></li>
+                <li><a href="games.html" class="active">Games</a></li>
+                <li><a href="index.html#team">Team</a></li>
+                <li><a href="blogs.html">News</a></li>
+                <li><a href="index.html#reviews">Reviews</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="games-page-section">
+        <div class="container">
+            <h1 class="main-title games-page-title">Explore Our <span class="highlight">Game Worlds</span></h1>
+            
+            <div class="search-bar-container">
+                <input type="text" placeholder="Search games by name or genre..." class="game-search-input">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+
+            <div class="game-list-grid">
+                
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('game_cyber_warriors.jpg');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Cyber Warriors</h3>
+                        <span class="game-genre">FPS, Sci-Fi</span>
+                        <p class="game-description">A fast-paced multiplayer shooter set in a futuristic dystopia.</p>
+                        <a href="download-link-1" class="btn-main btn-download">Download Now <i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('game_dragon_legends.jpg');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Dragon Legends</h3>
+                        <span class="game-genre">Fantasy, RPG (Beta)</span>
+                        <p class="game-description">Train mythical dragons and explore vast, magical kingdoms.</p>
+                        <a href="download-link-2" class="btn-main btn-download beta-tag">Play Beta <i class="fas fa-gamepad"></i></a>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('game_galaxy_quest.jpg');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Galaxy Quest</h3>
+                        <span class="game-genre">Strategy, RTS</span>
+                        <p class="game-description">Build your space empire and conquer rival galaxies in RTS style.</p>
+                        <a href="download-link-3" class="btn-main btn-download">Download Now <i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('game_neo_racer.jpg');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Neo-Racer</h3>
+                        <span class="game-genre">Racing, Arcade</span>
+                        <p class="game-description">Experience the thrill of zero-gravity racing through futuristic tunnels.</p>
+                        <a href="download-link-4" class="btn-main btn-download">Download Now <i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('game_project_x.jpg');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Project: X</h3>
+                        <span class="game-genre">Survival, Horror (Soon)</span>
+                        <p class="game-description">A terrifying survival game set in an abandoned research facility.</p>
+                        <a href="#" class="btn-main btn-download disabled">Coming Soon <i class="fas fa-clock"></i></a>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Free Gamer Studio. All rights reserved.</p>
+    </footer>
+
+    <script src="./js/gamessearch.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,271 @@
+/* ======================================================= */
+/* LIVE SAHIFA MAXSUS USLUBLARI */
+/* (Navbar, Body, Global ranglar style.css/contact.css dan keladi) */
+/* ======================================================= */
+
+/* FAQAT LIVEGA OID RANG O'ZGARUVCHISI */
+:root {
+    --live-red: #E74C3C; 
+}
+
+/* ANIMATSIYA SINFLARI - LIVE sahifasining elementlariga ta'sir qiladi */
+.image-animation, .content-block-animation, .value-item, .tech-item, .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.is-visible {
+    opacity: 1;
+    transform: translate(0);
+}
+
+/* 1. LIVE HERO SECTION */
+.live-hero-section {
+    background-color: var(--mid-dark-color);
+    text-align: center;
+    padding: 10rem 2rem 5rem; 
+    border-bottom: 5px solid var(--secondary-color);
+}
+
+.live-hero-section h1 {
+    text-shadow: 0 0 15px var(--primary-color);
+}
+
+.live-hero-section .highlight-live {
+    color: var(--live-red); 
+    animation: neon-red-glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neon-red-glow {
+    from { text-shadow: 0 0 5px var(--live-red), 0 0 10px var(--live-red); }
+    to { text-shadow: 0 0 10px var(--live-red), 0 0 30px var(--live-red); }
+}
+
+/* 2. STREAM PLAYER SECTION - TABLAR */
+.stream-player-section {
+    padding: 6rem 20px;
+    background-color: var(--dark-color);
+    text-align: center;
+}
+
+.stream-player-section h2 {
+    color: var(--primary-color);
+    text-shadow: 0 0 8px var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+/* TAB NAVIGATSIYASI */
+.tab-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 10px 0;
+    border-bottom: 2px solid rgba(160, 82, 255, 0.2);
+}
+
+.tab-button {
+    background-color: var(--dark-color);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+.tab-button.active {
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 20px var(--secondary-color);
+    transform: translateY(-5px);
+}
+
+/* TAB KONTENTINI JOYLASHTIRISH YECHIMI (opacity/position) */
+.tab-content-wrapper {
+    position: relative; 
+    min-height: 750px; 
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tab-content {
+    width: 100%;
+    position: absolute; 
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s;
+}
+
+.tab-content.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative; 
+}
+
+/* YONMA-YON STREAMLAR UCHUN GRID */
+.stream-container-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); 
+    gap: 30px; 
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+.full-width {
+    grid-column: 1 / -1; 
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Stream Videosi o'rab turuvchi element */
+.stream-wrapper {
+    width: 100%;
+    margin: 0 auto 2rem;
+    position: relative;
+    padding-top: 56.25%; 
+    background-color: #000;
+    border: 3px solid var(--secondary-color);
+    box-shadow: 0 0 30px rgba(76, 175, 80, 0.5); 
+}
+
+.stream-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.stream-info h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem; 
+    color: var(--secondary-color);
+    text-shadow: 0 0 5px var(--secondary-color);
+}
+
+/* HAMELEON KO'RISH TUGMASI */
+.btn-view-stream {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 50px; 
+    margin-bottom: 20px;
+    transition: all 0.4s ease-in-out;
+    border: 3px solid transparent; 
+}
+
+.hameleon-btn {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: var(--dark-color); 
+    box-shadow: 0 0 15px rgba(160, 82, 255, 0.5);
+}
+
+.hameleon-btn:hover {
+    background: none; 
+    color: var(--primary-color);
+    border: 3px solid var(--secondary-color);
+    box-shadow: 0 0 30px var(--secondary-color);
+    transform: scale(1.05);
+}
+
+/* TAGLAR */
+.stream-info .tags {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 2rem;
+}
+
+.tag-item {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(160, 82, 255, 0.5);
+}
+
+.stream-status {
+    background-color: var(--live-red);
+    box-shadow: 0 0 15px var(--live-red);
+}
+.stream-status i {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* 3. RECENT VIDEOS SECTION */
+.recent-videos-section {
+    padding: 6rem 20px;
+    background-color: var(--mid-dark-color);
+    text-align: center;
+}
+.recent-videos-section .highlight-neon {
+    color: var(--primary-color);
+}
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+.video-item {
+    background-color: var(--dark-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.video-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px var(--secondary-color);
+}
+.video-thumb {
+    position: relative;
+    padding-top: 56.25%;
+}
+.video-thumb img {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s;
+}
+
+/* ======================================================= */
+/* RESPONSIVE */
+/* ======================================================= */
+@media (max-width: 768px) {
+    .live-hero-section h1 { font-size: 3rem; }
+    .stream-container-grid {
+        grid-template-columns: 1fr; 
+        gap: 50px; 
+    }
+    .tab-content-wrapper { min-height: 1200px; } 
+    .tab-nav { flex-direction: column; gap: 10px; }
+    .tab-button.active { transform: translateY(0); }
+    .full-width { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+    .live-hero-section h1 { font-size: 2.5rem; }
+    .video-grid { grid-template-columns: 1fr; }
+}

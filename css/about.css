@@ -1,0 +1,159 @@
+/* about.css - Faqat about.html sahifasi uslublari */
+
+/* ==================================== */
+/* 1. SAHIFA KONTENTI LAYOUTI */
+/* ==================================== */
+
+.about-page-section {
+    /* Header ostidan boshlash uchun padding */
+    padding-top: 150px; 
+    padding-bottom: 100px;
+    background-color: #0d001a;
+    min-height: 100vh;
+}
+
+.about-page-title {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.highlight {
+    /* Agar highlight uslubi style.css da bo'lmasa, uni bu yerda yaratamiz */
+    color: #4CAF50;
+    font-weight: 900;
+}
+
+/* ==================================== */
+/* 2. INTRO & HISTORY BLOCK */
+/* ==================================== */
+
+.about-intro-block {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 80px;
+    padding: 30px;
+    background-color: #1a1a2e;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.intro-image {
+    min-width: 45%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(160, 82, 255, 0.3);
+}
+
+.intro-text h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 10px;
+}
+
+.intro-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 15px;
+}
+
+/* ==================================== */
+/* 3. CORE VALUES BLOCK */
+/* ==================================== */
+
+.core-values-block {
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.core-values-block h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+}
+
+.values-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.value-card {
+    flex: 1;
+    background-color: #1a1a2e;
+    padding: 30px;
+    border-radius: 12px;
+    border-top: 5px solid #A052FF;
+    transition: background-color 0.3s;
+}
+
+.value-card:hover {
+    background-color: #251841; /* Bir oz to'qroq hover */
+}
+
+.icon-value {
+    font-size: 3rem;
+    color: #4CAF50; /* Yashil rang */
+    margin-bottom: 15px;
+}
+
+.value-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.value-card p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+}
+
+/* ==================================== */
+/* 4. TEAM PITCH BLOCK */
+/* ==================================== */
+
+.team-pitch-block {
+    text-align: center;
+    padding: 50px;
+    border: 3px dashed rgba(160, 82, 255, 0.5);
+    border-radius: 15px;
+    margin-bottom: 40px;
+}
+
+.team-pitch-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.team-pitch-block p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 30px;
+}
+
+/* Tugma (btn-main uslubi style.css da bo'lishi kerak) */
+
+
+/* ==================================== */
+/* 5. RESPONSIVE */
+/* ==================================== */
+
+@media (max-width: 900px) {
+    .about-intro-block {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .intro-image {
+        width: 100%;
+        min-width: 100%;
+        height: 300px;
+    }
+
+    .values-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+}

@@ -1,0 +1,230 @@
+/* post-detail.css - Faqat blog postining batafsil sahifasi uslublari */
+
+/* ==================================== */
+/* 1. SAHIFA KONTENTI LAYOUTI */
+/* ==================================== */
+
+.post-detail-section {
+    padding-top: 150px; 
+    padding-bottom: 100px;
+    background-color: #0d001a;
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* ==================================== */
+/* 2. POST HEADER & METADATA */
+/* ==================================== */
+
+.post-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(160, 82, 255, 0.3);
+}
+
+.post-title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.post-meta {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.post-meta span {
+    margin: 0 15px;
+}
+
+.post-meta i {
+    color: #4CAF50; /* Yashil ikona */
+    margin-right: 5px;
+}
+
+/* ==================================== */
+/* 3. ASOSIY RASM */
+/* ==================================== */
+
+.main-post-image {
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    margin-bottom: 50px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+
+/* ==================================== */
+/* 4. MAQOLA MATNI (ARTICLE) */
+/* ==================================== */
+
+.post-content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.post-content h2 {
+    font-size: 2rem;
+    color: #A052FF; /* Binafsha sarlavha */
+    margin-top: 40px;
+    margin-bottom: 15px;
+    border-left: 5px solid #4CAF50;
+    padding-left: 15px;
+}
+
+.post-content p {
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Quote/Iqtibos uslubi */
+blockquote {
+    border-left: 4px solid #4CAF50;
+    padding: 15px 20px;
+    margin: 30px 0;
+    font-style: italic;
+    background-color: #1a1a2e;
+    border-radius: 4px;
+}
+
+/* Ro'yxatlar */
+.post-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 25px;
+}
+
+.post-content ul li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.post-content ul li::before {
+    content: "\f058"; /* check-circle ikona */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #A052FF;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+
+/* ==================================== */
+/* 5. IZOHLAR BO'LIMI (COMMENTS) */
+/* ==================================== */
+
+.comments-section {
+    max-width: 800px;
+    margin: 80px auto 40px auto;
+    padding-top: 40px;
+    border-top: 1px solid rgba(160, 82, 255, 0.3);
+}
+
+.comments-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Forma uslubi */
+.comment-form-container {
+    background-color: #1a1a2e;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.comment-form input[type="text"],
+.comment-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #333;
+    background-color: #0d001a;
+    color: #fff;
+    border-radius: 6px;
+    resize: vertical;
+}
+
+.comment-form textarea {
+    min-height: 100px;
+}
+
+.comment-submit-btn {
+    width: 100%;
+    /* btn-main uslubi style.css dan olinadi */
+}
+
+/* Mavjud izohlar uslubi */
+.comment-item {
+    padding: 20px;
+    border-left: 3px solid #4CAF50;
+    background-color: #1a1a2e;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.comment-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.comment-author {
+    font-weight: 700;
+    color: #4CAF50;
+}
+
+.comment-author .role {
+    color: #A052FF;
+    font-weight: 400;
+}
+
+.comment-date {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.comment-text {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* ==================================== */
+/* 6. RESPONSIVE USLUBLAR */
+/* ==================================== */
+
+.back-link {
+    text-align: center;
+    margin-top: 50px;
+}
+
+@media (max-width: 900px) {
+    .main-post-image {
+        height: 300px;
+    }
+
+    .post-title {
+        font-size: 2rem;
+    }
+
+    .post-meta span {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .post-content,
+    .comments-section {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}

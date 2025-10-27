@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Gamer Studio - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/login.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            
+            <div class="logo-auth">
+                Welcome to <span class="gradient-text">FGS</span>
+            </div>
+
+            <h2 class="auth-title">Sign In to Continue</h2>
+
+            <form action="/login" method="POST" class="auth-form">
+                
+                <div class="input-group">
+                    <i class="fas fa-user-alt icon"></i>
+                    <input type="text" id="username" name="username" placeholder="Username or Email" required>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-lock icon"></i>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+
+                <div class="forgot-password">
+                    <a href="./forgot.html">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn-auth">
+                    Login <i class="fas fa-sign-in-alt"></i>
+                </button>
+            </form>
+
+            <div class="register-link">
+                Don't have an account? <a href="register.html">Sign Up</a>
+            </div>
+
+            </div>
+    </div>
+
+</body>
+</html>

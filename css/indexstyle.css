@@ -642,7 +642,7 @@ html {
 
 .news-grid {
     display: flex; 
-    gap: 30px;
+    gap: 20px;
     padding-top: 50px;
     transition: transform 0.5s ease-in-out; 
 }
@@ -653,7 +653,7 @@ html {
     border-radius: 12px;
     overflow: hidden; 
     position: relative;
-    height: 300px; 
+    height: 370px; 
     text-align: left;
     transition: transform 0.3s, box-shadow 0.3s;
     border: 1px solid rgba(255, 255, 255, 0.1);

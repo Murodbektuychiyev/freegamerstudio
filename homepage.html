@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Gamer Studio - Player Hub</title>
+    <title>Free Gamer Studio - Dashboard</title>
     
     <link rel="stylesheet" href="./css/indexstyle.css"> 
     <link rel="stylesheet" href="./css/homepage.css"> 
@@ -34,10 +34,10 @@
             </ul>
         </nav>
         
-        <div class="user-profile navbar-user-info">
-            <div class="user-avatar user-status-online">MT</div>
+        <div class="user-profile navbar-user-info" id="userProfileNav">
+            <div class="user-avatar user-status-online" id="userAvatarInitials">FGS</div>
             <div class="user-details">
-                <p class="user-email">murodbektuychiyev83@gmail.com</p>
+                <p class="user-email" id="userEmailDisplay"><a href="./login.html" style="color: white; text-decoration: none;">Tizimga kiring</a></p>
                 <span class="material-icons-outlined user-menu-icon">expand_more</span>
             </div>
         </div>
@@ -47,9 +47,9 @@
         
         <section class="welcome-section panel-card">
             <h1><span class="sticker-icon">🎮</span> Free Gamer Studio</h1>
-            <h2>Xush kelibsiz, Murodbek Tuychiyev!</h2>
-            <p>O‘yinlar olamiga sho‘ng‘ing — o‘zingizga mos o‘yinni, jamoani va g‘alabani toping!</p>
-        </section>
+            <h2 id="welcomeMessage">Xush kelibsiz!</h2>
+            <p>O‘yinlar olamiga sho‘ng‘ing — o‘zingizga mos o‘yinni, jamoani va g‘alabani toping!</p>
+        </section>
         
         <section class="action-cards-section">
             <div class="action-cards-grid">
@@ -58,21 +58,21 @@
                     <span class="material-icons-outlined icon-large primary-neon">videogame_asset</span>
                     <h3>Game Center</h3>
                     <p>Turli janrdagi o‘yinlar orasidan tanlang, darajalarni oching va yangi g‘alabalar sari yo‘l oling.</p>
-                    <a href="#" class="btn-action" target="_blank">O‘yinlarni izlash</a>
+                    <a href="./games.html" class="btn-action">O‘yinlarni izlash</a>
                 </div>
                 
                 <div class="action-card panel-card">
                     <span class="material-icons-outlined icon-large primary-neon">psychology</span>
                     <h3>YouTube</h3>
                     <p>Bizning YouTubeda qanday GamePlay qilishimizni ko'ring va o'rganing</p>
-                    <a href="#" class="btn-action" target="_blank">YouTubega kirish</a>
+                    <a href="https://www.youtube.com/@FreeGamerStudioUz/" class="btn-action" target="_blank">YouTubega kirish</a>
                 </div>
                 
                 <div class="action-card panel-card">
                     <span class="material-icons-outlined icon-large primary-neon">build_circle</span>
                     <h3>Hamjamiyat</h3>
                     <p>Hamjamiyat orqali turli game mavzularida suhbat quring va tajriba almashing</p>
-                    <a href="#" class="btn-action" target="_blank">Hamjamiyatni ochish</a>
+                    <a href="https://t.me/freegameruz1" class="btn-action" target="_blank">Hamjamiyatni ochish</a>
                 </div>
                 
             </div>
@@ -180,5 +180,7 @@
     </footer>
     
     <script src="./js/back-to-top.js"></script>
+
+    <script type="module" src="./js/firebase-set-up.js"></script>
 </body>
 </html>

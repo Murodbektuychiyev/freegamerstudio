@@ -278,14 +278,19 @@ h2 {
     font-size: 1.4rem;
 }
 
-.discord-btn { background: var(--discord-color, #7289DA); border: 2px solid var(--discord-color, #7289DA); color: #fff; }
-.youtube-btn { background: var(--youtube-color, #FF0000); border: 2px solid var(--youtube-color, #FF0000); color: #fff; }
-.twitch-btn { background: var(--twitch-color, #9146FF); border: 2px solid var(--twitch-color, #9146FF); color: #fff; }
+/* Tugmalar uchun Ranglar (Ijtimoiy tarmoqlar) */
+.telegram-btn { background: #0088CC; border: 2px solid #0088CC; color: #fff; }
+.youtube-btn { background: #FF0000; border: 2px solid #FF0000; color: #fff; }
+.instagram-btn { background: #E4405F; border: 2px solid #E4405F; color: #fff; }
 
-.btn-community:hover { background: transparent; transform: translateY(-3px) scale(1.02); }
-.discord-btn:hover { color: var(--discord-color, #7289DA); box-shadow: 0 0 30px var(--discord-color, #7289DA); }
-.youtube-btn:hover { color: var(--youtube-color, #FF0000); box-shadow: 0 0 30px var(--youtube-color, #FF0000); }
-.twitch-btn:hover { color: var(--twitch-color, #9146FF); box-shadow: 0 0 30px var(--twitch-color, #9146FF); }
+/* Hover ranglarini ham to'g'irlash */
+.telegram-btn:hover { color: #0088CC; box-shadow: 0 0 30px #0088CC; }
+.youtube-btn:hover { color: #FF0000; box-shadow: 0 0 30px #FF0000; }
+.instagram-btn:hover { color: #E4405F; box-shadow: 0 0 30px #E4405F; }
+
+.btn-community:hover { 
+    background: transparent; 
+}
 
 .scroll-to-contact {
     margin-top: 40px; font-size: 1.1rem; padding: 15px 30px; border-radius: 8px;
@@ -442,6 +447,86 @@ h2 {
 
 .subscribe-btn:hover {
     transform: scale(1.05); box-shadow: 0 0 20px var(--secondary-color), 0 0 5px var(--primary-color);
+}
+
+/* ==================================== */
+/* BACK TO TOP TUGMASI (RAINBOW NEON) */
+/* ==================================== */
+
+/* 1. RANGLAR UCHUN KEYFRAMES (Animatsiya) */
+@keyframes rainbow-neon-glow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    
+    color: var(--light-text-color); /* Ikona rangi Oq */
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 9999;
+    
+    /* ASOSIY: RAINBOW NEON EFFEKTI */
+    background: linear-gradient(
+        135deg, 
+        #FF0000, /* Qizil */
+        #FF7F00, /* Zarg'aldoq */
+        #FFFF00, /* Sariq */
+        #4CAF50, /* Yashil */
+        #0000FF, /* Ko'k */
+        #A052FF /* Binafsha */
+    );
+    background-size: 400% 400%; /* Animatsiya uchun to'rt baravar kattalashtirish */
+    animation: rainbow-neon-glow 5s ease infinite; /* Tovlanish animatsiyasi */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Umumiy oq soya */
+    border: 1px solid var(--light-text-color);
+    
+    /* Dastlab yashirish va animatsiya */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+/* 2. HOVER (BOSHQA YORQIN NEONGA O'TISH) */
+.back-to-top:hover {
+    transform: scale(1.1);
+    /* Animatsiyani to'xtatish */
+    animation: none; 
+    
+    /* YANINGILANDI: Yashil neon rangga o'tish */
+    background-color: var(--secondary-color);
+    box-shadow: 
+        0 0 5px var(--secondary-color), 
+        0 0 20px var(--secondary-color);
+    border-color: var(--dark-color);
+    color: var(--dark-color); /* Ikona rangi To'q bo'ladi */
+}
+
+/* Tugma faol bo'lganda ko'rsatish sinfi (JS tomonidan qo'shiladi) */
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mobil ekranlar */
+@media (max-width: 480px) {
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 1.2rem;
+        bottom: 15px;
+        right: 15px;
+    }
 }
 
 /* ======================================================= */

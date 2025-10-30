@@ -939,6 +939,85 @@ html {
     color: rgba(255, 255, 255, 0.6);
 }
 
+/* ==================================== */
+/* BACK TO TOP TUGMASI (RAINBOW NEON) */
+/* ==================================== */
+
+/* 1. RANGLAR UCHUN KEYFRAMES (Animatsiya) */
+@keyframes rainbow-neon-glow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    
+    color: var(--light-text-color); /* Ikona rangi Oq */
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 9999;
+    
+    /* ASOSIY: RAINBOW NEON EFFEKTI */
+    background: linear-gradient(
+        135deg, 
+        #FF0000, /* Qizil */
+        #FF7F00, /* Zarg'aldoq */
+        #FFFF00, /* Sariq */
+        #4CAF50, /* Yashil */
+        #0000FF, /* Ko'k */
+        #A052FF /* Binafsha */
+    );
+    background-size: 400% 400%; /* Animatsiya uchun to'rt baravar kattalashtirish */
+    animation: rainbow-neon-glow 5s ease infinite; /* Tovlanish animatsiyasi */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Umumiy oq soya */
+    border: 1px solid var(--light-text-color);
+    
+    /* Dastlab yashirish va animatsiya */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+/* 2. HOVER (BOSHQA YORQIN NEONGA O'TISH) */
+.back-to-top:hover {
+    transform: scale(1.1);
+    /* Animatsiyani to'xtatish */
+    animation: none; 
+    
+    /* YANINGILANDI: Yashil neon rangga o'tish */
+    background-color: var(--secondary-color);
+    box-shadow: 
+        0 0 5px var(--secondary-color), 
+        0 0 20px var(--secondary-color);
+    border-color: var(--dark-color);
+    color: var(--dark-color); /* Ikona rangi To'q bo'ladi */
+}
+
+/* Tugma faol bo'lganda ko'rsatish sinfi (JS tomonidan qo'shiladi) */
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mobil ekranlar */
+@media (max-width: 480px) {
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 1.2rem;
+        bottom: 15px;
+        right: 15px;
+    }
+}
 
 /* ==================================== */
 /* 12. RESPONSIVE STYLES */

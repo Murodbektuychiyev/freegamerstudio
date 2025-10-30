@@ -32,9 +32,10 @@
 
 .blog-list-grid {
     display: grid;
-    /* Katta ekranlarda 2 ta ustun */
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 40px;
+    /* YANGILANDI: Katta ekranlarda 4 ta ustun */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 15px; /* Bo'shliq kamaytirildi */
+    align-items: stretch; 
 }
 
 .blog-post-card {
@@ -56,6 +57,7 @@
 /* ==================================== */
 
 .post-image {
+    /* YANGILANDI: Balandlikni ixchamlashtirish */
     height: 250px; 
     background-size: cover;
     background-position: center;
@@ -63,7 +65,7 @@
 }
 
 .post-content-area {
-    padding: 25px;
+    padding: 15px; /* Padding kamaytirildi */
 }
 
 .post-date {
@@ -75,16 +77,16 @@
 }
 
 .post-title {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    font-size: 1.35rem;
+    margin-bottom: 8px;
     line-height: 1.3;
     color: #fff; /* Kontent rangi */
 }
 
 .post-excerpt {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 /* BATAFSIL TUGMASI */
@@ -112,33 +114,84 @@
     box-shadow: 0 3px 10px rgba(75, 117, 252, 0.5);
 }
 
-
 /* ==================================== */
-/* 4. PAGINATSIYA (Sahifalash) */
+/* BACK TO TOP TUGMASI (RAINBOW NEON) */
 /* ==================================== */
 
-.pagination {
-    margin-top: 60px;
+/* 1. RANGLAR UCHUN KEYFRAMES (Animatsiya) */
+@keyframes rainbow-neon-glow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    
+    color: var(--light-text-color); /* Ikona rangi Oq */
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
     text-align: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 9999;
+    
+    /* ASOSIY: RAINBOW NEON EFFEKTI */
+    background: linear-gradient(
+        135deg, 
+        #FF0000, /* Qizil */
+        #FF7F00, /* Zarg'aldoq */
+        #FFFF00, /* Sariq */
+        #4CAF50, /* Yashil */
+        #0000FF, /* Ko'k */
+        #A052FF /* Binafsha */
+    );
+    background-size: 400% 400%; /* Animatsiya uchun to'rt baravar kattalashtirish */
+    animation: rainbow-neon-glow 5s ease infinite; /* Tovlanish animatsiyasi */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Umumiy oq soya */
+    border: 1px solid var(--light-text-color);
+    
+    /* Dastlab yashirish va animatsiya */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
-.page-link {
-    display: inline-block;
-    text-decoration: none;
-    padding: 10px 15px;
-    margin: 0 5px;
-    border-radius: 6px;
-    background-color: #1a1a2e;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.8);
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+/* 2. HOVER (BOSHQA YORQIN NEONGA O'TISH) */
+.back-to-top:hover {
+    transform: scale(1.1);
+    /* Animatsiyani to'xtatish */
+    animation: none; 
+    
+    /* YANINGILANDI: Yashil neon rangga o'tish */
+    background-color: var(--secondary-color);
+    box-shadow: 
+        0 0 5px var(--secondary-color), 
+        0 0 20px var(--secondary-color);
+    border-color: var(--dark-color);
+    color: var(--dark-color); /* Ikona rangi To'q bo'ladi */
 }
 
-.page-link:hover,
-.page-link.active {
-    background-color: #A052FF;
-    border-color: #A052FF;
-    color: #fff;
+/* Tugma faol bo'lganda ko'rsatish sinfi (JS tomonidan qo'shiladi) */
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mobil ekranlar */
+@media (max-width: 480px) {
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 1.2rem;
+        bottom: 15px;
+        right: 15px;
+    }
 }
 
 /* ==================================== */

@@ -102,6 +102,7 @@ a:hover {
 .navbar-user-info {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 /* FAYL ICHIDAGI USER PROFILE USLUBLARI (Navbar uchun) */
@@ -124,7 +125,10 @@ a:hover {
 }
 .user-details {
     display: none; /* Kichik ekranda yashirish */
+    align-items: center;
+    margin-right: 15px; /* Avatardan ajratish */
 }
+
 .navbar-user-info:hover .user-details {
     display: block;
     position: absolute;
@@ -137,6 +141,7 @@ a:hover {
     z-index: 1001;
     min-width: 200px;
 }
+
 .user-email {
     font-size: 0.8em;
     color: var(--low-contrast-text);
@@ -151,18 +156,6 @@ a:hover {
     padding: 80px 30px 30px 30px; 
     flex-grow: 1;
     background-color: var(--dark-color);
-}
-
-@media (max-width: 1000px) {
-    .navbar nav ul {
-        display: none; /* Kichik ekranda menyuni yashirish */
-    }
-    .navbar {
-        justify-content: space-around;
-    }
-    .navbar-user-info {
-        order: 1;
-    }
 }
 
 /* ======================================================= */
@@ -487,9 +480,7 @@ a:hover {
 /* ======================================================= */
 /* MINIMAL FOOTER Uslublari */
 /* ======================================================= */
-.site-footer {
-    /* HTML kodingizda class "footer" emas, "site-footer" deb ishlataylik */
-    /* Agar siz bergan kodni ishlatmoqchi bo'lsangiz, classni .footer ga o'zgartiring */
+.footer {
     
     background-color: var(--mid-dark-color);
     color: var(--low-contrast-text);
@@ -503,7 +494,7 @@ a:hover {
     font-size: 0.9em;
 }
 
-.site-footer p {
+.footer p {
     margin: 0; /* Paragraf marginini olib tashlash */
 }
 
@@ -594,21 +585,6 @@ a:hover {
     transform: scale(1.05); /* Rasm biroz kattalashadi */
 }
 
-/* ======================================================= */
-/* 2. RESPONSIVE USLUBLAR (Gamer Mode uchun) */
-/* ======================================================= */
-@media (max-width: 768px) {
-    .main-content {
-        padding: 80px 15px 15px 15px; /* Kichikroq padding */
-    }
-    .stats-grid, .action-cards-grid, .steps-grid, .tips-grid {
-        grid-template-columns: 1fr; /* Hamma narsa tagma-tag joylashadi */
-    }
-    .navbar nav {
-        display: none; /* Navigatsiyani kichik ekranda yashirish */
-    }
-}
-
 /* --------------------------------------------------- */
 /* YANGILANGAN Rasm/Diagramma Uslublari (Tik holatda va Hover) */
 /* --------------------------------------------------- */
@@ -646,10 +622,83 @@ a:hover {
     transform: scale(1.02); /* Kichik kattalashish animatsiyasi */
 }
 
-/* RESPONSIVE TUZATISH (kerakli bo'lsa) */
-@media (max-width: 768px) {
-    .game-chart-image {
-        max-height: 300px; /* Kichik ekranda rasmni ixcham qilish */
+/* ==================================== */
+/* BACK TO TOP TUGMASI (RAINBOW NEON) */
+/* ==================================== */
+
+/* 1. RANGLAR UCHUN KEYFRAMES (Animatsiya) */
+@keyframes rainbow-neon-glow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    
+    color: var(--light-text-color); /* Ikona rangi Oq */
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 9999;
+    
+    /* ASOSIY: RAINBOW NEON EFFEKTI */
+    background: linear-gradient(
+        135deg, 
+        #FF0000, /* Qizil */
+        #FF7F00, /* Zarg'aldoq */
+        #FFFF00, /* Sariq */
+        #4CAF50, /* Yashil */
+        #0000FF, /* Ko'k */
+        #A052FF /* Binafsha */
+    );
+    background-size: 400% 400%; /* Animatsiya uchun to'rt baravar kattalashtirish */
+    animation: rainbow-neon-glow 5s ease infinite; /* Tovlanish animatsiyasi */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Umumiy oq soya */
+    border: 1px solid var(--light-text-color);
+    
+    /* Dastlab yashirish va animatsiya */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+/* 2. HOVER (BOSHQA YORQIN NEONGA O'TISH) */
+.back-to-top:hover {
+    transform: scale(1.1);
+    /* Animatsiyani to'xtatish */
+    animation: none; 
+    
+    /* YANINGILANDI: Yashil neon rangga o'tish */
+    background-color: var(--secondary-color);
+    box-shadow: 
+        0 0 5px var(--secondary-color), 
+        0 0 20px var(--secondary-color);
+    border-color: var(--dark-color);
+    color: var(--dark-color); /* Ikona rangi To'q bo'ladi */
+}
+
+/* Tugma faol bo'lganda ko'rsatish sinfi (JS tomonidan qo'shiladi) */
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mobil ekranlar */
+@media (max-width: 480px) {
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 1.2rem;
+        bottom: 15px;
+        right: 15px;
     }
 }
 
@@ -664,5 +713,76 @@ a:hover {
     }
     100% {
         background-position: 100% 50%; /* Gradusni cheksiz aylantirish */
+    }
+}
+
+/* ======================================================= */
+/* RESPONSIVE USLUBLAR (Mobil moslashuvchanlik) */
+/* ======================================================= */
+
+@media (max-width: 1000px) {
+    .navbar nav ul {
+        display: none; 
+    }
+    .navbar {
+        justify-content: space-around;
+    }
+    .navbar-user-info {
+        order: 1; 
+    }
+    .user-details {
+        font-size: 0.9rem; 
+        margin-right: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 80px 15px 15px 15px; 
+    }
+    .action-cards-grid, .tips-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .stats-grid, .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .navbar nav {
+        display: none;
+    }
+    .game-chart-image {
+        max-height: 350px; 
+    }
+    .navbar-user-info .user-email {
+        display: none; 
+    }
+    .user-details {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 15px;
+        justify-content: space-between; 
+    }
+    .logo {
+        font-size: 1.5rem;
+    }
+    .welcome-section h1 { 
+        font-size: 2rem; 
+    }
+    .welcome-section h2 { 
+        font-size: 1.5rem; 
+    }
+    .stats-grid, .steps-grid, .action-cards-grid, .tips-grid {
+        grid-template-columns: 1fr;
+    }
+    .game-chart-image {
+        max-height: 250px; 
+    }
+    .slogan-section h3 {
+        font-size: 1.5rem;
     }
 }

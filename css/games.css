@@ -1,14 +1,13 @@
-/* games.css - games.html sahifasi uchun to'liq va responsive uslublar */
+/* games.css - Games sahifasining toza va moslashuvchan uslublari */
 
 /* ==================================== */
 /* 1. SAHIFA KONTENTI LAYOUTI */
 /* ==================================== */
 
 .games-page-section {
-    /* Header ostidan boshlash va fon rangini o'rnatish */
     padding-top: 150px; 
     padding-bottom: 100px;
-    background-color: #0d001a; 
+    background-color: var(--dark-color);
     min-height: 100vh;
 }
 
@@ -32,8 +31,8 @@
     padding: 15px 50px 15px 20px; 
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 30px; 
-    background-color: #1a1a2e; 
-    color: #fff;
+    background-color: var(--mid-dark-color);
+    color: var(--light-text-color);
     font-size: 1rem;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
@@ -44,7 +43,7 @@
 
 .game-search-input:focus {
     outline: none;
-    border-color: #A052FF;
+    border-color: var(--primary-color);
     box-shadow: 0 0 8px rgba(160, 82, 255, 0.5);
 }
 
@@ -53,90 +52,116 @@
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
-    color: #4CAF50; 
+    color: var(--secondary-color);
     font-size: 1.2rem;
 }
 
 /* ==================================== */
-/* 3. O'YINLAR RO'YXATI GRIDI & KARTALAR */
+/* 3. O'YINLAR RO'YXATI GRIDI & KARTALAR (Yozuvlar ostida, doimiy) */
 /* ==================================== */
 
 .game-list-grid {
     display: grid;
-    /* Katta ekranlarda 3 ustun */
     grid-template-columns: repeat(3, 1fr); 
     gap: 30px;
-    /* MUHIM: Grid elementlarini bir xil balandlikda qilib cho'zish */
     align-items: stretch; 
 }
 
 /* O'YIN KARTASI USLUBI */
 .game-card {
-    background-color: #1a1a2e; 
+    background-color: var(--mid-dark-color); 
     border-radius: 12px;
+    position: relative; 
     overflow: hidden; 
     transition: transform 0.3s, box-shadow 0.3s;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    
-    /* MUHIM: Flex yordamida ichki elementlarni boshqarish */
-    display: flex;
-    flex-direction: column;
+    min-height: 370px; 
+    display: block; 
 }
 
 .game-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(76, 175, 80, 0.5); 
+    /* YANINGILANDI: Neon/Ksenon soya effekti */
+    box-shadow: 
+        0 0 15px var(--primary-color), /* Binafsha neon */
+        0 0 30px rgba(76, 175, 80, 0.6); /* Yashil porlash */
 }
 
+/* IMG TEGI UCHUN KONTEYNER */
 .game-image {
     width: 100%; 
-    height: 180px; 
-    background-size: cover;
-    background-position: center;
+    height: 100%; 
+    position: absolute; 
+    top: 0;
+    left: 0;
 }
 
+/* IMG ELEMENTINING O'ZI */
+.game-img-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+/* Yozuvlar bloki - Rasm ustida turadi */
 .game-info {
-    padding: 20px;
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px 20px 20px 20px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Qolgan bo'sh joyni egallash */
+    justify-content: flex-end; 
+    background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
+    transition: background 0.3s;
+    z-index: 10; 
+}
+
+.game-card:hover .game-info {
+    background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 100%);
 }
 
 .game-title {
     font-size: 1.4rem; 
     margin-bottom: 5px;
+    color: var(--light-text-color);
+    text-shadow: 0 0 5px black;
 }
 
 .game-genre {
     font-size: 0.85rem;
-    color: #A052FF; 
+    color: var(--secondary-color); 
     margin-bottom: 10px;
 }
 
-/* TAVSIF: Cheklovlar olib tashlandi, matn to'liq ko'rinadi */
+/* TAVSIF - DOIMIY KO'RINADI */
 .game-description {
     font-size: 0.95rem;
     line-height: 1.4;
     margin-bottom: 20px;
-    
-    /* MUHIM: Matn uzunligiga qaramay, tugmani pastga surish uchun bo'sh joyni egallaydi */
-    flex-grow: 1; 
-    
-    /* Cheklovchi uslublar olib tashlandi */
+    color: var(--light-text-color);
     max-height: none; 
+    opacity: 1; 
     overflow: visible; 
-    display: block;
 }
 
+.btn-main, .btn-download {
+    z-index: 11; 
+    margin-top: 10px; 
+    width: 100%;
+}
 
 /* ==================================== */
 /* 4. TUGMALAR (NEON EFFEKTLI) */
 /* ==================================== */
 
-/* games.html dagi barcha asosiy tugmalar uchun umumiy uslublar */
 .btn-main, 
 .btn-download 
 {
+    z-index: 11; 
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -145,12 +170,11 @@
     font-weight: 700;
     cursor: pointer;
     text-decoration: none;
-    display: inline-block; 
-
-    /* Standart Binafsha/Ko'k gradient */
-    background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%); 
+    display: block; 
+    width: 100%;
+    margin-top: 10px; 
     
-    /* 3D effekt */
+    background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%); 
     box-shadow: 0 4px 0 0 #4a0988; 
     transition: all 0.2s ease-in-out;
 }
@@ -158,55 +182,21 @@
 .btn-main:hover,
 .btn-download:hover
 {
-    /* Hover - ko'tarilish va neon porlash */
     transform: translateY(-2px); 
     box-shadow: 0 6px 0 0 #4a0988, 0 0 15px rgba(37, 117, 252, 0.7); 
-}
-
-.btn-main:active,
-.btn-download:active
-{
-    /* Bosish effekti */
-    transform: translateY(2px); 
-    box-shadow: 0 2px 0 0 #4a0988; 
-}
-
-.btn-main i,
-.btn-download i
-{
-    color: #fff !important; 
-    margin-left: 8px;
 }
 
 /* DOWNLOAD NOW tugmasi uchun MAXSUS (Yashil Neon) */
 .btn-download {
     width: 100%;
-    text-align: center;
-    padding: 10px;
-    /* MUHIM: Har doim pastki qismga yopishadi */
-    margin-top: auto; 
-    
-    /* MAXSUS: Yashil gradient */
     background: linear-gradient(90deg, #4CAF50 0%, #25b331 100%); 
     color: #0d001a; 
     font-weight: 900;
-    
-    /* MAXSUS 3D soya - to'q yashil */
     box-shadow: 0 4px 0 0 #2e6b32; 
 }
 
 .btn-download:hover {
-    transform: translateY(-2px); 
     box-shadow: 0 6px 0 0 #2e6b32, 0 0 15px rgba(76, 175, 80, 0.8); 
-}
-
-.btn-download:active {
-    transform: translateY(2px); 
-    box-shadow: 0 2px 0 0 #2e6b32; 
-}
-
-.btn-download i {
-    color: #0d001a !important; 
 }
 
 /* Beta va Disabled tugmalari uchun maxsus ranglar */
@@ -214,12 +204,6 @@
     background: linear-gradient(90deg, #FFD700 0%, #FFA500 100%); 
     color: #0d001a;
     box-shadow: 0 4px 0 0 #a37500; 
-}
-.btn-download.beta-tag:hover {
-    box-shadow: 0 6px 0 0 #a37500, 0 0 15px rgba(255, 215, 0, 0.8);
-}
-.btn-download.beta-tag i {
-    color: #0d001a !important;
 }
 
 .btn-download.disabled {
@@ -229,6 +213,85 @@
     box-shadow: 0 4px 0 0 #333;
 }
 
+/* ==================================== */
+/* BACK TO TOP TUGMASI (RAINBOW NEON) */
+/* ==================================== */
+
+/* 1. RANGLAR UCHUN KEYFRAMES (Animatsiya) */
+@keyframes rainbow-neon-glow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    
+    color: var(--light-text-color); /* Ikona rangi Oq */
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 9999;
+    
+    /* ASOSIY: RAINBOW NEON EFFEKTI */
+    background: linear-gradient(
+        135deg, 
+        #FF0000, /* Qizil */
+        #FF7F00, /* Zarg'aldoq */
+        #FFFF00, /* Sariq */
+        #4CAF50, /* Yashil */
+        #0000FF, /* Ko'k */
+        #A052FF /* Binafsha */
+    );
+    background-size: 400% 400%; /* Animatsiya uchun to'rt baravar kattalashtirish */
+    animation: rainbow-neon-glow 5s ease infinite; /* Tovlanish animatsiyasi */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Umumiy oq soya */
+    border: 1px solid var(--light-text-color);
+    
+    /* Dastlab yashirish va animatsiya */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+/* 2. HOVER (BOSHQA YORQIN NEONGA O'TISH) */
+.back-to-top:hover {
+    transform: scale(1.1);
+    /* Animatsiyani to'xtatish */
+    animation: none; 
+    
+    /* YANINGILANDI: Yashil neon rangga o'tish */
+    background-color: var(--secondary-color);
+    box-shadow: 
+        0 0 5px var(--secondary-color), 
+        0 0 20px var(--secondary-color);
+    border-color: var(--dark-color);
+    color: var(--dark-color); /* Ikona rangi To'q bo'ladi */
+}
+
+/* Tugma faol bo'lganda ko'rsatish sinfi (JS tomonidan qo'shiladi) */
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mobil ekranlar */
+@media (max-width: 480px) {
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 1.2rem;
+        bottom: 15px;
+        right: 15px;
+    }
+}
 
 /* ==================================== */
 /* 5. RESPONSIVE USLUBLAR */
@@ -236,13 +299,13 @@
 
 @media (max-width: 1200px) {
     .game-list-grid {
-        grid-template-columns: repeat(2, 1fr); /* O'rta ekranlarda 2 ustun */
+        grid-template-columns: repeat(2, 1fr); 
     }
 }
 
 @media (max-width: 768px) {
     .game-list-grid {
-        grid-template-columns: 1fr; /* Mobil ekranda 1 ustun */
+        grid-template-columns: 1fr; 
         gap: 20px;
     }
     
